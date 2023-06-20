@@ -53,9 +53,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-body {
-
-}
 section {
 	margin-block: 6em;
 }
@@ -113,7 +110,8 @@ header {
 	min-height: 470px;
 	position: relative;
 }
-.banner-img {
+.bannerImg {
+	display: flex;
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -121,16 +119,49 @@ header {
 	object-fit: cover;
 	object-position: center;
 }
+.bannerImg2 {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	object-fit: cover;
+	object-position: center;
+}
+.bannerImg3 {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	object-fit: cover;
+	object-position: center;
+}
+.bannerImg4 {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	object-fit: cover;
+	object-position: center;
+}
+
+
+
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
+	cursor: pointer;
 }
-#banner .arrow_left {
+#banner .arrowLeft {
 	left: 10px;
+	cursor: pointer;
 }
-#banner .arrow_right {
+#banner .arrowRight {
 	right: 10px;
+	cursor: pointer;
 }
 /* Gestion des points du carrousel */
 .dots {
