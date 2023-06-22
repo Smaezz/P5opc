@@ -1,51 +1,76 @@
+
 const slides = [
 	{
-		"image":"slide1.jpg",
-		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
+		"image":"./assets/images/slideshow/slide1.jpg",
+		"tagLine":"<p>Impressions tous formats <span>en boutique et en ligne</span></>",
+		"dot": "dot1"
 	},
 	{
-		"image":"slide2.jpg",
-		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
+		"image":"./assets/images/slideshow/slide2.jpg",
+		"tagLine":"<p>Tirages haute définition grand format <span>pour vos bureaux et events</span></>",
+		"dot": "dot2"
 	},
 	{
-		"image":"slide3.jpg",
-		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
+		"image":"./assets/images/slideshow/slide3.jpg",
+		"tagLine":"<p>Grand choix de couleurs <span>de CMJN aux pantones</span></>",
+		"dot": "dot3"
 	},
 	{
-		"image":"slide4.png",
-		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
+		"image":"./assets/images/slideshow/slide4.png",
+		"tagLine":"<p>Autocollants <span>avec découpe laser sur mesure</span></>",
+		"dot": "dot4"
 	}
 ];
 
-function slideTo(index) {
-	slides.style.transform = `translateX(-${index * slideWidth}px)`;
-	currentSlide = index;
-  
-	const slideImage = document.querySelector('.slideImage');
-	const bannerText = document.querySelector('.bannerText');
-	slideImage.src = slides[currentSlide].image;
-	bannerText.innerHTML = slides[currentSlide].tagLine;
-  }
-  
-  const banner = document.getElementById('.banner');
+
+
   const arrowLeft = document.querySelector('.arrowLeft');
   const arrowRight = document.querySelector('.arrowRight');
-  const slideWidth = slides.clientWidth;
+  const dot_selected = document.querySelector('dot_selected');
   let currentSlide = 0;
   
   arrowLeft.addEventListener('click', () => {
 	if (currentSlide > 0) {
-	  slideTo(currentSlide - 1);
+	  currentSlide--;
+	} 
+	else {
+	  currentSlide = slides.length - 1;
 	}
+
+	slideTo(currentSlide);
+    dotChange(currentSlide);
   });
   
   arrowRight.addEventListener('click', () => {
 	if (currentSlide < slides.length - 1) {
-	  slideTo(currentSlide + 1);
+	  currentSlide++;
+	} 
+	else {
+	  currentSlide = 0;
 	}
+
+	slideTo(currentSlide);
+    dotChange(currentSlide);
   });
   
+  function slideTo(index) {
+	const slidesContainer = document.querySelector('.bannerImg');
+	const bannerImg = document.querySelector('.bannerImg');
+	const bannerText = document.querySelector('.bannerText');
+	
+	bannerImg.src = slides[index].image;
+	bannerText.innerHTML = slides[index].tagLine;
+  };
+
+  function dotChange(index) {
+	const dotSelected = document.querySelector('.dot_selected');
+	dotSelected.classList.remove('dot_selected');
+	
+	const dots = document.querySelectorAll('.dot');
+	dots[index].classList.add('dot_selected');
+  }
+  
   // Afficher la première diapositive au chargement de la page
-  /*slideTo(0);*/
-
-
+  slideTo(0);
+  dotChange(0);
+  

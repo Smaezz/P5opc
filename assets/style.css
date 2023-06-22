@@ -100,7 +100,6 @@ header {
 .devis {
 	background-color: var(--secondary-color);
 }
-
 #banner {
 	display: flex;
 	flex-direction: column;
